@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfTestData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTestData" xmlns:ucmenu="clr-namespace:WpfTestData.View.UCMenu" xmlns:ucdataview="clr-namespace:WpfTestData.View.UCDataView" xmlns:ucupdatedata="clr-namespace:WpfTestData.View.UCUpdateData"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding MainVM, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"></RowDefinition>
+            <RowDefinition Height="0.9*"></RowDefinition>
+            <RowDefinition Height="0.05*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+            <ColumnDefinition Width="0.9*"></ColumnDefinition>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.85*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Data List-->
+            <ucdataview:UCDataView/>
+            <!--Update Data-->
+            <ucupdatedata:UCUpdateData Grid.Column="1" 
+                                       RecordName="{Binding SelectedDataModel.Name, Mode=TwoWay}"
+                                       RecordSurname="{Binding SelectedDataModel.Surname, Mode=TwoWay}"
+                                       RecordPatronymic="{Binding SelectedDataModel.Patronymic, Mode=TwoWay}"
+                                       RecordEmail="{Binding SelectedDataModel.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <!--Bottom menu-->
+            <ucmenu:UCMenu Grid.Row="1" EnableInsert="True" EnableRemove="{Binding EnableSelectedMode}"
+                           EnableSelected="{Binding EnableUpdateMode}"/>
+        </Grid>
+    </Grid>
+</Window>

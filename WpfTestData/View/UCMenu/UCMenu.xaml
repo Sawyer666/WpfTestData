@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="WpfTestData.View.UCMenu.UCMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfTestData.View.UCMenu"
+             mc:Ignorable="d"  x:Name="uc"
+             d:DesignHeight="100" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WpfTestData;component/View/UCMenu/UCMenuTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+            <ColumnDefinition Width="0.9*"></ColumnDefinition>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Add New Item-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="New Data" Click="Button_Click" IsEnabled="{Binding ElementName=uc, Path=EnableInsert}"/>
+            </Grid>
+            <!--Remove Selected Item-->
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="Remove" Click="Button_Click_1" IsEnabled="{Binding ElementName=uc, Path=EnableRemove}"></Button>
+            </Grid>
+            <!--Save Selected Item-->
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="Save" Click="Button_Click_2" IsEnabled="{Binding ElementName=uc, Path=EnableSelected}"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfTestData.View.UCDataView" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <Color x:Key="lbx_item_standart_background_grad_top">#096191</Color>
+    <Color x:Key="lbx_item_standart_background_grad_bottom">#02517a</Color>
+    <Color x:Key="down_top">#1c5d7f</Color>
+    <Color x:Key="down_bottom">#4e88ab</Color>
+    
+    <SolidColorBrush x:Key="lbx_item_standart_foreground" Color="#f3fbff" />
+
+    <Storyboard x:Key="Pressed_ItemsCtrlItem_stb">
+        <Storyboard>
+            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)"  Duration="0:0:0" To="{StaticResource down_bottom}"></ColorAnimation>
+            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"  Duration="0:0:0" To="{StaticResource down_top}"></ColorAnimation>
+        </Storyboard>
+    </Storyboard>
+    <Storyboard x:Key="Normal_ItemsCtrlItem_stb">
+        <Storyboard>
+            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Duration="0:0:0" To="{StaticResource lbx_item_standart_background_grad_top}"></ColorAnimation>
+            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"  Duration="0:0:0" To="{StaticResource lbx_item_standart_background_grad_bottom}"></ColorAnimation>
+        </Storyboard>
+    </Storyboard>
+    
+</ResourceDictionary>

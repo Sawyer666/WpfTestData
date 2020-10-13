@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfTestData.View.UCMenu"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:Double x:Key="fontsize_base">16</system:Double>
+    <system:Double x:Key="listItemHeader_fontsize_base">18</system:Double>
+    <system:Double x:Key="listItem_fontsize_base">15</system:Double>
+    <SolidColorBrush x:Key="main_background" Color="#9ec3b6"/>
+    <Color x:Key="btn_background_grad_top">#4e88ab</Color>
+    <Color x:Key="btn_background_grad_bottom">#1c5d7f</Color>
+    <Color x:Key="down_top">#1c5d7f</Color>
+    <Color x:Key="down_bottom">#4e88ab</Color>
+    <SolidColorBrush x:Key="Shell_Control_Foreground" Color="#fff" />
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="{StaticResource fontsize_base}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource Shell_Control_Foreground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Normal_stb">
+                            <ColorAnimation Storyboard.TargetName="background_linear_grad" Storyboard.TargetProperty="(LinearGradientBrush.GradientStops)[0].(GradientStop.Color)"  Duration="0:0:0" To="#4e88ab"></ColorAnimation>
+                            <ColorAnimation Storyboard.TargetName="background_linear_grad" Storyboard.TargetProperty="(LinearGradientBrush.GradientStops)[1].(GradientStop.Color)"  Duration="0:0:0" To="#1c5d7f"></ColorAnimation>
+                            <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity"  To="1.0" Duration="0:0:0.0"/>
+                        </Storyboard>
+                        <Storyboard x:Key="Disabled_stb">
+                            <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity"  To="0.4" Duration="0:0:0.0"/>
+                        </Storyboard>
+                        <Storyboard x:Key="Pressed_stb">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="background_linear_grad" Storyboard.TargetProperty="(LinearGradientBrush.GradientStops)[0].(GradientStop.Color)"  Duration="0:0:0" To="{StaticResource down_top}"></ColorAnimation>
+                                <ColorAnimation Storyboard.TargetName="background_linear_grad" Storyboard.TargetProperty="(LinearGradientBrush.GradientStops)[1].(GradientStop.Color)"  Duration="0:0:0" To="{StaticResource down_bottom}"></ColorAnimation>
+                                <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity"  To="1.0" Duration="0:0:0.0"/>
+                            </Storyboard>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border x:Name="Border" CornerRadius="6" Opacity="1.0"
+                            TextBlock.FontSize="{TemplateBinding FontSize}"                                          
+                            BorderBrush="Transparent">
+                        <Border.Background>
+                            <LinearGradientBrush x:Name="background_linear_grad"  StartPoint="0,1" EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="1" Color="{StaticResource btn_background_grad_top}"/>
+                                    <GradientStop Offset="0" Color="{StaticResource btn_background_grad_bottom}"/>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="MouseOver"></VisualState>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed" Storyboard="{StaticResource Pressed_stb}"/>
+                                <VisualState x:Name="Disabled" Storyboard="{StaticResource Disabled_stb}"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter  x:Name="LayoutRoot" Margin="10,0"                                               
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           RecognizesAccessKey="True">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

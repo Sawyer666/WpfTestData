@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="WpfTestData.View.UCUpdateData.UCUpdateData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfTestData.View.UCUpdateData" xmlns:validationrules="clr-namespace:WpfTestData.ValidationRules"
+             mc:Ignorable="d" x:Name="uc"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WpfTestData;component/View/UCUpdateData/UCUpdateDataTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Surname-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Фамилия"></TextBlock>              
+                <TextBox Grid.Row="1" Validation.Error="TextBox_Error">
+                    <TextBox.Text>
+                        <Binding Path="RecordSurname" ElementName="uc" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" ValidatesOnExceptions ="True">
+                            <Binding.ValidationRules>
+                                <validationrules:DataRule Data="RecordSurname" CustomMessage="Ошибка ввода"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </Grid>
+        <!--Name-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Имя"></TextBlock>
+                <TextBox Grid.Row="1" Text="{Binding RecordName, ElementName=uc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="1" Validation.Error="TextBox_Error">
+                    <TextBox.Text>
+                        <Binding Path="RecordName" ElementName="uc" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" ValidatesOnExceptions ="True">
+                            <Binding.ValidationRules>
+                                <validationrules:DataRule Data="RecordName" CustomMessage="Ошибка ввода"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </Grid>
+        <!--Last Name-->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Отчество"></TextBlock>
+                <TextBox Grid.Row="1" Validation.Error="TextBox_Error">
+                    <TextBox.Text>
+                        <Binding Path="RecordPatronymic" ElementName="uc" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" ValidatesOnExceptions ="True">
+                            <Binding.ValidationRules>
+                                <validationrules:DataRule Data="RecordPatronymic" CustomMessage="Ошибка ввода"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </Grid>
+        <!--Email-->
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Email"></TextBlock>
+                <TextBox Grid.Row="1" Validation.Error="TextBox_Error">                   
+                    <TextBox.Text>
+                        <Binding Path="RecordEmail" ElementName="uc" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" ValidatesOnExceptions ="True">
+                            <Binding.ValidationRules>
+                                <validationrules:EmailRule Email="RecordEmail" CustomMessage="Ошибка ввода"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
