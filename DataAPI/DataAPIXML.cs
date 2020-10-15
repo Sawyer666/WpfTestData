@@ -1,4 +1,5 @@
 ﻿using DataAPI.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -104,6 +105,48 @@ namespace DataAPI
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public override bool SaveAllToFile(List<DataRecord> records, string path)
+        {
+            try
+            {
+                fileName = path;
+                FileInfo file = new FileInfo(path);
+                xDocument = new XDocument();
+                xDocument.Add(new XElement("records"));
+                records.ForEach(item =>
+                {
+                    var xElement = new XElement("record");
+                    Type t = item.GetType();
+                    PropertyInfo[] pi = t.GetProperties();
+                    foreach (PropertyInfo p in pi)
+                        xElement.Add(new XElement(p.Name, p.GetValue(item, null).ToString()));
+                    xDocument.Root.Add(xElement);
+                });
+                xDocument.Save(fileName);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public override List<DataRecord> LoadFromFile(string path)
+        {
+            List<DataRecord> dataRecords = new List<DataRecord>();
+            try
+            {
+                fileName = path;
+                FileInfo file = new FileInfo(path);
+                xDocument = XDocument.Load(path);
+                return this.GetRecords();
+            }
+            catch (Exception)
+            {
+                return dataRecords;
             }
         }
     }

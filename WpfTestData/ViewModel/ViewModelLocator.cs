@@ -32,7 +32,7 @@ namespace WpfTestData.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
-            MainVM.SetDataAbility(new DataAPIXML());
+            MainVM.SetDataAbility(new DataAPIBinary());
             //MainVM.SetDataAbility(new DataAPIBinary());
             MainVM.GetRecordList();
             ////if (ViewModelBase.IsInDesignModeStatic)

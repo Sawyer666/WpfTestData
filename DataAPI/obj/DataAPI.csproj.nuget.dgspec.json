@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WpfTestData\\DataAPI\\DataAPI.csproj": {}
+    "D:\\test\\WpfTestData\\DataAPI\\DataAPI.csproj": {}
   },
   "projects": {
-    "D:\\WpfTestData\\DataAPI\\DataAPI.csproj": {
+    "D:\\test\\WpfTestData\\DataAPI\\DataAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WpfTestData\\DataAPI\\DataAPI.csproj",
+        "projectUniqueName": "D:\\test\\WpfTestData\\DataAPI\\DataAPI.csproj",
         "projectName": "DataAPI",
-        "projectPath": "D:\\WpfTestData\\DataAPI\\DataAPI.csproj",
+        "projectPath": "D:\\test\\WpfTestData\\DataAPI\\DataAPI.csproj",
         "packagesPath": "C:\\Users\\alexey.m\\.nuget\\packages\\",
-        "outputPath": "D:\\WpfTestData\\DataAPI\\obj\\",
+        "outputPath": "D:\\test\\WpfTestData\\DataAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

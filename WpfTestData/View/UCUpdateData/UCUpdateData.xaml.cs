@@ -82,6 +82,7 @@ namespace WpfTestData.View.UCUpdateData
             else
             {
                 VM.Validate(false);
+                VM.EnableUpdateMode = true;
             }
         }
     }

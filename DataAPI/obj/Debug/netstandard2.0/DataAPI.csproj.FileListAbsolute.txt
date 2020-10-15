@@ -24,3 +24,12 @@ D:\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.csproj.CoreCompileInputs
 D:\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.dll
 D:\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.pdb
 D:\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.csprojAssemblyReference.cache
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.AssemblyInfoInputs.cache
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.AssemblyInfo.cs
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.csproj.CoreCompileInputs.cache
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.dll
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.pdb
+D:\test\WpfTestData\DataAPI\bin\Debug\netstandard2.0\DataAPI.deps.json
+D:\test\WpfTestData\DataAPI\bin\Debug\netstandard2.0\DataAPI.dll
+D:\test\WpfTestData\DataAPI\bin\Debug\netstandard2.0\DataAPI.pdb
+D:\test\WpfTestData\DataAPI\obj\Debug\netstandard2.0\DataAPI.csprojAssemblyReference.cache

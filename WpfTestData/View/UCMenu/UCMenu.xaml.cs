@@ -79,5 +79,19 @@ namespace WpfTestData.View.UCMenu
                 return;
             await VM.SaveRecord();
         }
+
+        private async void Button_Save(object sender, RoutedEventArgs e)
+        {
+            if (VM == null)
+                return;
+            await VM.SaveAllToFile();
+        }
+
+        private async void Button_Load(object sender, RoutedEventArgs e)
+        {
+            if (VM == null)
+                return;
+            await VM.LoadDataFromFile();
+        }
     }
 }

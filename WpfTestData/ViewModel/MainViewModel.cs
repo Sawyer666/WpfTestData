@@ -1,6 +1,7 @@
 ﻿using DataAPI;
 using DataAPI.Model;
 using GalaSoft.MvvmLight;
+using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -45,6 +46,7 @@ namespace WpfTestData.ViewModel
         public MainViewModel()
         {
             SelectedDataModel = new DataModel();
+            EnableUpdateMode = true;
             data = new ObservableCollection<DataModel>();
             BindingOperations.EnableCollectionSynchronization(data, _lock);
         }
@@ -102,6 +104,17 @@ namespace WpfTestData.ViewModel
         {
             dataAPI = db;
         }
+        private void SetDataAbility(string filename)
+        {
+            if (filename.EndsWith(".xml"))
+            {
+                SetDataAbility(new DataAPIXML());
+            }
+            if (filename.EndsWith(".dat"))
+            {
+                SetDataAbility(new DataAPIBinary());
+            }
+        }
         /// <summary>
         /// get all data
         /// </summary>
@@ -119,7 +132,7 @@ namespace WpfTestData.ViewModel
             });
 
             this.RaisePropertyChanged(() => this.DataList);
-             SelectedDataModel = new DataModel();
+            SelectedDataModel = new DataModel();
         }
         /// <summary>
         /// Save selected record
@@ -167,6 +180,60 @@ namespace WpfTestData.ViewModel
                     MessageBox.Show("Данные успешно обновлены");
                 }
                 return cmd_res;
+            });
+        }
+        /// <summary>
+        /// Save All Data to file. You can choose format...
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> SaveAllToFile()
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "XML Files (*.xml)|*.xml|binary (*.dat)|*.dat*";
+                dialog.Title = "Please save file";
+                dialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                if (dialog.ShowDialog() == true)
+                {
+                    string filename = dialog.FileName;
+                    SetDataAbility(filename);
+                    bool res = new SaveDataToFileCommand(dataAPI, data, filename).Execute();
+                    if (res) MessageBox.Show("Данные успешно сохранены " + filename);
+                    GetRecordList();
+                    return res;
+                }
+                return false;
+            });
+        }
+        /// <summary>
+        /// Load data from file. You can choose format...
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> LoadDataFromFile()
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "XML Files (*.xml)|*.xml|binary (*.dat)|*.dat*";
+                dialog.Title = "Please select file";
+                dialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                if (dialog.ShowDialog() == true)
+                {
+                    string filename = dialog.FileName;
+                    SetDataAbility(filename);
+                    var dataRecords = new LoadDataFromFileCommand(dataAPI, filename).Execute();
+                    if (dataRecords == null)
+                        return false;
+                    data.Clear();
+                    dataRecords.ForEach((item) =>
+                    {
+                        data.Add(new DataModel(item));
+                    });
+                    this.RaisePropertyChanged(() => this.DataList);
+                    return true;
+                }
+                return false;
             });
         }
 

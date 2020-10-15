@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="DataAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\DataAPI.dll</HintPath>
+      <HintPath>..\DataAPI\bin\Debug\netstandard2.0\DataAPI.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
@@ -77,7 +77,9 @@
     <Compile Include="Command\DataCommand.cs" />
     <Compile Include="Command\GetDataCommand.cs" />
     <Compile Include="Command\InsertDataCommand.cs" />
+    <Compile Include="Command\LoadDataFromFileCommand.cs" />
     <Compile Include="Command\RemoveDataCommand.cs" />
+    <Compile Include="Command\SaveDataToFileCommand.cs" />
     <Compile Include="Command\UpdateDataCommand.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Model\DataModel.cs" />

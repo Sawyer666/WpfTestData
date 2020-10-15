@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:WpfTestData.View.UCMenu"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:Double x:Key="fontsize_base">16</system:Double>
+    <system:Double x:Key="fontsize_base">14</system:Double>
     <system:Double x:Key="listItemHeader_fontsize_base">18</system:Double>
     <system:Double x:Key="listItem_fontsize_base">15</system:Double>
     <SolidColorBrush x:Key="main_background" Color="#9ec3b6"/>
@@ -55,7 +55,7 @@
                                 <VisualState x:Name="Disabled" Storyboard="{StaticResource Disabled_stb}"/>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <ContentPresenter  x:Name="LayoutRoot" Margin="10,0"                                               
+                        <ContentPresenter  x:Name="LayoutRoot" Margin="5,0"                                               
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            RecognizesAccessKey="True">

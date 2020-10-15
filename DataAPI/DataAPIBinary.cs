@@ -94,5 +94,44 @@ namespace DataAPI
                 return false;
             }
         }
+
+        public override bool SaveAllToFile(List<DataRecord> records, string path)
+        {
+            try
+            {
+                binaryfileName = path + ".dat";
+                using (var binWriter = new BinaryWriter(File.Open(binaryfileName, FileMode.Append)))
+                {
+                    records.ForEach(record =>
+                   {
+                       binWriter.Write(record.id.ToString());
+                       binWriter.Write(record.surname);
+                       binWriter.Write(record.name);
+                       binWriter.Write(record.patronymic);
+                       binWriter.Write(record.email);
+                       s.Seek(0, SeekOrigin.Begin);
+                   });
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public override List<DataRecord> LoadFromFile(string path)
+        {
+            List<DataRecord> dataRecords = new List<DataRecord>();
+            try
+            {
+                binaryfileName = path;
+                return this.GetRecords();
+            }
+            catch (Exception)
+            {
+                return dataRecords;
+            }
+        }
     }
 }

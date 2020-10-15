@@ -14,5 +14,9 @@ namespace DataAPI
         public abstract bool UpdateRecord(DataRecord record);
 
         public abstract bool RemoveRecord(Guid id);
+
+        public abstract bool SaveAllToFile(List<DataRecord> records,string path);
+
+        public abstract List<DataRecord> LoadFromFile(string fileName);
     }
 }
